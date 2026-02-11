@@ -1,0 +1,18 @@
+name: Deploy to DEV
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: DEV
+    steps:
+      - name: Deploy
+        env:
+          DEV_SECRET: ${{ secrets.DEV_SECRET }}
+          DEV_ENV: ${{ vars.DEV_ENV }}
+        run: |
+          echo "Deploying to DEV environment"
+          echo "DEV_SECRET: $DEV_SECRET"
+          echo "DEV_ENV: $DEV_ENV"
